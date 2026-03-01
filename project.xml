@@ -1,0 +1,37 @@
+<library>
+    <repositories>
+        <repository>
+            <path>ext/modm/repo.lb</path>
+        </repository>
+    </repositories>
+
+    <!--
+        Inherit all settings from the official DISCO-F429ZI board profile:
+          MCU : STM32F429ZIT6  (Cortex-M4F, 180 MHz, 2 MB Flash, 256 KB RAM)
+          HSE : 8 MHz crystal
+          LEDs: PG13 (green), PG14 (red)
+          BTN : PA0
+    -->
+    <extends>modm:disco-f429zi</extends>
+
+    <modules>
+        <!-- Board-level support (clock tree, pin aliases, LED/button helpers) -->
+        <module>modm:board:disco-f429zi</module>
+
+        <!-- Platform drivers consumed by the application -->
+        <module>modm:platform:core</module>
+        <module>modm:platform:gpio</module>
+        <module>modm:platform:uart:1</module>
+
+        <!-- Utility / IO layer (modm::IOStream printf-style output) -->
+        <module>modm:io</module>
+        <module>modm:debug</module>
+        <!-- Utilities-->
+        <module>modm:utils</module>
+
+        <!-- CMake build-system module (generates modm/CMakeLists.txt) -->
+        <module>modm:build:cmake</module>
+    </modules>
+    <options>
+    </options>
+</library>
