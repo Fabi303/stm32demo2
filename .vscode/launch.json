@@ -15,6 +15,9 @@
                 "target/stm32f4x.cfg"
             ],
             "svdFile": "${workspaceFolder}/modm/cmsis/svd/stm32f429.svd",
+            "openOCDLaunchCommands": [
+                "stm32f4x.cpu configure -event gdb-attach { reset halt }"
+            ],
             "preLaunchCommands": [
                 "monitor reset halt"
             ]

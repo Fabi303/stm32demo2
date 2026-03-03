@@ -29,9 +29,21 @@
         <!-- Utilities-->
         <module>modm:utils</module>
 
+        <!-- SPI5 for ILI9341 configuration commands -->
+        <module>modm:platform:spi:5</module>
+
+        <!-- malloc/free backend required by LVGL -->
+        <module>modm:platform:heap</module>
+
+        <!-- LVGL 9.x graphics library + modm port (auto-inits, tick via modm::Clock) -->
+        <module>modm:lvgl</module>
+
         <!-- CMake build-system module (generates modm/CMakeLists.txt) -->
         <module>modm:build:cmake</module>
     </modules>
     <options>
+        <!-- LVGL's lv_timer_handler() render tree needs well over 3 KB of stack.
+             Increase to 8 KB; revisit if lv_mem_monitor shows further overflows. -->
+        <option name="modm:platform:cortex-m:main_stack_size">8192</option>
     </options>
 </library>

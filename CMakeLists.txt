@@ -136,7 +136,11 @@ target_link_libraries(pw_log_modm
 # ---------------------------------------------------------------------------
 # Application
 # ---------------------------------------------------------------------------
-add_executable(blinky src/main.cpp)
+add_executable(blinky
+    src/main.cpp
+    src/display_init.cpp
+    src/fault_handler.cpp
+)
 target_link_libraries(blinky
     modm
     modm_options
@@ -146,4 +150,5 @@ target_link_libraries(blinky
 
 target_include_directories(blinky PRIVATE
     "modm/src"
+    "src"          # for lv_conf_local.h (picked up by generated lv_conf.h)
 )
